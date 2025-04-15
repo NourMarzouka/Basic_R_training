@@ -4,6 +4,74 @@ This repository contains introductory training materials for learning R and RStu
 
 ---
 
+## 0. Basics of R: Vectors, Data Frames, and More
+
+Before diving into the main topics, let's briefly introduce some fundamental concepts in R that are essential for data analysis.
+
+### Vectors
+A vector is a basic data structure in R that holds elements of the same type (e.g., numbers, characters, or logical values). You can create vectors using the `c()` function.
+
+```r
+# Numeric vector
+numbers <- c(1, 2, 3, 4, 5)
+
+# Character vector
+names <- c("Alice", "Bob", "Charlie")
+
+# Logical vector
+logical_values <- c(TRUE, FALSE, TRUE)
+```
+
+### Data Frames
+A data frame is a table-like structure where each column can have a different data type (e.g., numeric, character). It is one of the most commonly used data structures in R for handling datasets.
+
+```r
+# Create a data frame
+data <- data.frame(
+  ID = 1:3,
+  Name = c("Alice", "Bob", "Charlie"),
+  Score = c(85, 90, 88)
+)
+
+# Access columns
+print(data$Name)  # Access the 'Name' column
+```
+
+### Lists
+A list is a flexible data structure that can hold elements of different types, including vectors, data frames, and even other lists.
+
+```r
+# Create a list
+my_list <- list(
+  numbers = c(1, 2, 3),
+  names = c("Alice", "Bob"),
+  data = data.frame(ID = 1:2, Score = c(90, 95))
+)
+
+# Access elements
+print(my_list$names)  # Access the 'names' element
+```
+
+### Matrices
+A matrix is a two-dimensional array where all elements must be of the same type. It is useful for mathematical operations.
+
+```r
+# Create a matrix
+matrix_data <- matrix(1:9, nrow = 3, ncol = 3)
+print(matrix_data)
+```
+
+### Factors
+Factors are used to represent categorical data in R. They are especially useful for statistical modeling.
+
+```r
+# Create a factor
+gender <- factor(c("Male", "Female", "Male", "Female"))
+print(gender)
+```
+
+---
+
 ## 1. Introduction to R and RStudio
 
 R is a powerful, open-source programming language for statistical computing and graphics, while RStudio is an integrated development environment (IDE) that makes working with R easier. In this session, we'll cover the basics of setting up R and RStudio, navigating the interface, and running simple commands.
@@ -185,11 +253,11 @@ ui <- fluidPage(
   titlePanel("Simple Shiny App"),
   sidebarLayout(
     sidebarPanel(
-      sliderInput("num", "Choose a number:", min = 1, max = 100, value = 50)
+    sliderInput("num", "Choose a number:", min = 1, max = 100, value = 50)
     ),
     mainPanel(
-      textOutput("result"),
-      plotOutput("myplot")
+    textOutput("result"),
+    plotOutput("myplot")
     )
   )
 )
@@ -197,7 +265,7 @@ server <- function(input, output) {
   output$result <- renderText({ paste("You selected:", input$num) })
   output$myplot <- renderPlot({
     barplot(c(A = input$num, B = 100 - input$num, C = input$num / 2), 
-            ylim = c(0, 100), col = c("lightgreen", "red", "lightblue"))
+    ylim = c(0, 100), col = c("lightgreen", "red", "lightblue"))
   })
 }
 shinyApp(ui = ui, server = server)
