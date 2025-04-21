@@ -190,7 +190,7 @@ For those who want to go beyond the basics.
 **Advanced Plotting with ggplot2**
 
 ```r
-install.packages("ggplot2")
+# install.packages("ggplot2")
 library(ggplot2)
 
 ggplot(penguins, aes(x = Bill.Length..mm., y = Body.Mass..g., color = Species)) +
@@ -203,7 +203,7 @@ ggplot(penguins, aes(x = Bill.Length..mm., y = Body.Mass..g., color = Species)) 
 Create interactive web apps directly from R.
 
 ```r
-install.packages("shiny")
+# install.packages("shiny")
 library(shiny)
 
 ui <- fluidPage(
