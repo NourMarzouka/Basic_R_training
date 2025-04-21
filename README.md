@@ -7,32 +7,33 @@ You'll learn about setting up your environment, working with data, running basic
 
 ---
 
-## 0. Introduction: What are R and RStudio?
+## 1. Introduction: What are R and RStudio?
 
-In this section, we introduce R and RStudio:
-- **R** is a free, open-source language for statistics, data analysis, and visualization.
-- **RStudio** is an Integrated Development Environment (IDE) that makes working with R easier.
+**R** is a free, open-source language for statistics, data analysis, and visualization.  
+**RStudio** is an Integrated Development Environment (IDE) that makes working with R easier.
 
-**Resources**:
-- [Download R](https://cran.r-project.org/)
-- [Download RStudio](https://posit.co/download/rstudio-desktop/)
-- [CRAN Packages Repository](https://cran.r-project.org/web/packages/)
-- [Bioconductor for Bioinformatics](https://bioconductor.org/)
+**Resources**:  
+- [Download R](https://cran.r-project.org/)  
+- [Download RStudio](https://posit.co/download/rstudio-desktop/)  
+- [CRAN Packages Repository](https://cran.r-project.org/web/packages/)  
+- [Bioconductor for Bioinformatics](https://bioconductor.org/)  
 - [Shiny Apps for Interactive Web Applications](https://shiny.posit.co/)
 
 ---
 
-## 1. Basics of R: Vectors, Data Frames, If-Else, and More
+## 2. R Basics: Vectors, Data Frames, and More
 
 Learn the foundational data structures and control flows in R, essential for any analysis.
 
-### Vectors
+**Vectors**  
+A vector is a sequence of data elements of the same type.
 
 ```r
 weights <- c(45.2, 50.1, 55.0)
 ```
 
-### Data Frames
+**Data Frames**  
+A data frame is like a table or spreadsheet in R.
 
 ```r
 penguins_small <- data.frame(
@@ -42,7 +43,8 @@ penguins_small <- data.frame(
 )
 ```
 
-### Lists
+**Lists**  
+Lists can contain different types of objects.
 
 ```r
 example_list <- list(
@@ -52,19 +54,22 @@ example_list <- list(
 )
 ```
 
-### Matrices
+**Matrices**  
+Matrices are two-dimensional arrays.
 
 ```r
 matrix_example <- matrix(1:6, nrow = 2, ncol = 3)
 ```
 
-### Factors
+**Factors**  
+Factors are used for categorical data.
 
 ```r
 species_factor <- factor(c("Adelie", "Chinstrap", "Gentoo", "Adelie"))
 ```
 
-### If-Else Statement
+**If-Else Statement**  
+Control flow for decision making.
 
 ```r
 x <- 5
@@ -77,7 +82,7 @@ if (x > 0) {
 
 ---
 
-## 2. Importing Example Data: Penguins Dataset
+## 3. Importing Example Data: Penguins Dataset
 
 Practice loading real-world datasets into R.
 
@@ -88,25 +93,25 @@ head(penguins)
 
 ---
 
-## 3. Basic Data Manipulation (Using Base R)
+## 4. Basic Data Manipulation (Using Base R)
 
 Learn to filter, create new variables, and summarize data.
 
-### Subsetting and Filtering
+**Subsetting and Filtering**
 
 ```r
 heavy_penguins <- subset(penguins, body_mass_g > 4000)
 head(heavy_penguins)
 ```
 
-### Creating New Columns
+**Creating New Columns**
 
 ```r
 penguins$size_category <- ifelse(penguins$body_mass_g > 4000, "Large", "Small")
 head(penguins)
 ```
 
-### Summarizing Data
+**Summarizing Data**
 
 ```r
 mean(penguins$body_mass_g, na.rm = TRUE)
@@ -114,7 +119,7 @@ mean(penguins$body_mass_g, na.rm = TRUE)
 
 ---
 
-## 4. Matching IDs Between Tables
+## 5. Matching IDs Between Tables
 
 Understand how to join datasets together by a common variable.
 
@@ -130,24 +135,24 @@ head(merged_penguins)
 
 ---
 
-## 5. Basic Statistical Analyses
+## 6. Basic Statistical Analyses
 
 Explore simple statistical tests and models.
 
-### Chi-Square Test
+**Chi-Square Test**
 
 ```r
 table(penguins$sex)
 chisq.test(table(penguins$sex))
 ```
 
-### t-test
+**t-test**
 
 ```r
 t.test(body_mass_g ~ sex, data = penguins)
 ```
 
-### Linear Regression
+**Linear Regression**
 
 ```r
 model <- lm(body_mass_g ~ bill_length_mm, data = penguins)
@@ -156,11 +161,11 @@ summary(model)
 
 ---
 
-## 6. Basic Plotting (Base R)
+## 7. Basic Plotting (Base R)
 
 Visualize your data with simple plots.
 
-### Scatter Plot
+**Scatter Plot**
 
 ```r
 plot(penguins$bill_length_mm, penguins$body_mass_g,
@@ -170,7 +175,7 @@ plot(penguins$bill_length_mm, penguins$body_mass_g,
 abline(lm(body_mass_g ~ bill_length_mm, data = penguins), col = "red")
 ```
 
-### Histogram
+**Histogram**
 
 ```r
 hist(penguins$body_mass_g, main = "Body Mass Distribution", col = "lightblue")
@@ -178,11 +183,11 @@ hist(penguins$body_mass_g, main = "Body Mass Distribution", col = "lightblue")
 
 ---
 
-## 7. Advanced Self-Exploration (Optional)
+## 8. Advanced Self-Exploration (Optional)
 
-Opportunities for those who want to go beyond the basics.
+For those who want to go beyond the basics.
 
-### Advanced Plotting with ggplot2
+**Advanced Plotting with ggplot2**
 
 ```r
 install.packages("ggplot2")
@@ -194,7 +199,8 @@ ggplot(penguins, aes(x = bill_length_mm, y = body_mass_g, color = species)) +
   theme_minimal()
 ```
 
-### Shiny App Example
+**Shiny App Example**  
+Create interactive web apps directly from R.
 
 ```r
 install.packages("shiny")
@@ -221,11 +227,11 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-For other examples, visit: https://shiny.posit.co/
+For more Shiny examples, visit: https://shiny.posit.co/
 
 ---
 
-## 8. Exercises for Self-Practice
+## 9. Exercises for Self-Practice
 
 Test your knowledge and skills!
 
