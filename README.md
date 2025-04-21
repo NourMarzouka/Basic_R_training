@@ -38,7 +38,7 @@ A data frame is like a table or spreadsheet in R.
 ```r
 penguins_small <- data.frame(
   species = c("Adelie", "Chinstrap", "Gentoo"),
-  bill_length_mm = c(39.1, 48.7, 50.0),
+  Bill.Length..mm. = c(39.1, 48.7, 50.0),
   Body.Mass..g. = c(3750, 3800, 5000)
 )
 ```
@@ -155,7 +155,7 @@ t.test(Body.Mass..g. ~ Sex, data = penguins)
 **Linear Regression**
 
 ```r
-model <- lm(Body.Mass..g. ~ bill_length_mm, data = penguins)
+model <- lm(Body.Mass..g. ~ Bill.Length..mm., data = penguins)
 summary(model)
 ```
 
@@ -168,11 +168,11 @@ Visualize your data with simple plots.
 **Scatter Plot**
 
 ```r
-plot(penguins$bill_length_mm, penguins$Body.Mass..g.,
+plot(penguins$Bill.Length..mm., penguins$Body.Mass..g.,
      main = "Bill Length vs Body Mass",
      xlab = "Bill Length (mm)", ylab = "Body Mass (g)",
      pch = 19, col = "blue")
-abline(lm(Body.Mass..g. ~ bill_length_mm, data = penguins), col = "red")
+abline(lm(Body.Mass..g. ~ Bill.Length..mm., data = penguins), col = "red")
 ```
 
 **Histogram**
@@ -193,7 +193,7 @@ For those who want to go beyond the basics.
 install.packages("ggplot2")
 library(ggplot2)
 
-ggplot(penguins, aes(x = bill_length_mm, y = Body.Mass..g., color = Species)) +
+ggplot(penguins, aes(x = Bill.Length..mm., y = Body.Mass..g., color = Species)) +
   geom_point() +
   geom_smooth(method = "lm") +
   theme_minimal()
