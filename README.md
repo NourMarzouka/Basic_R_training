@@ -39,7 +39,7 @@ A data frame is like a table or spreadsheet in R.
 penguins_small <- data.frame(
   species = c("Adelie", "Chinstrap", "Gentoo"),
   bill_length_mm = c(39.1, 48.7, 50.0),
-  body_mass_g = c(3750, 3800, 5000)
+  Body.Mass..g. = c(3750, 3800, 5000)
 )
 ```
 
@@ -100,21 +100,21 @@ Learn to filter, create new variables, and summarize data.
 **Subsetting and Filtering**
 
 ```r
-heavy_penguins <- subset(penguins, body_mass_g > 4000)
+heavy_penguins <- subset(penguins, Body.Mass..g. > 4000)
 head(heavy_penguins)
 ```
 
 **Creating New Columns**
 
 ```r
-penguins$size_category <- ifelse(penguins$body_mass_g > 4000, "Large", "Small")
+penguins$size_category <- ifelse(penguins$Body.Mass..g. > 4000, "Large", "Small")
 head(penguins)
 ```
 
 **Summarizing Data**
 
 ```r
-mean(penguins$body_mass_g, na.rm = TRUE)
+mean(penguins$Body.Mass..g., na.rm = TRUE)
 ```
 
 ---
@@ -149,13 +149,13 @@ chisq.test(table(penguins$sex))
 **t-test**
 
 ```r
-t.test(body_mass_g ~ sex, data = penguins)
+t.test(Body.Mass..g. ~ sex, data = penguins)
 ```
 
 **Linear Regression**
 
 ```r
-model <- lm(body_mass_g ~ bill_length_mm, data = penguins)
+model <- lm(Body.Mass..g. ~ bill_length_mm, data = penguins)
 summary(model)
 ```
 
@@ -168,17 +168,17 @@ Visualize your data with simple plots.
 **Scatter Plot**
 
 ```r
-plot(penguins$bill_length_mm, penguins$body_mass_g,
+plot(penguins$bill_length_mm, penguins$Body.Mass..g.,
      main = "Bill Length vs Body Mass",
      xlab = "Bill Length (mm)", ylab = "Body Mass (g)",
      pch = 19, col = "blue")
-abline(lm(body_mass_g ~ bill_length_mm, data = penguins), col = "red")
+abline(lm(Body.Mass..g. ~ bill_length_mm, data = penguins), col = "red")
 ```
 
 **Histogram**
 
 ```r
-hist(penguins$body_mass_g, main = "Body Mass Distribution", col = "lightblue")
+hist(penguins$Body.Mass..g., main = "Body Mass Distribution", col = "lightblue")
 ```
 
 ---
@@ -193,7 +193,7 @@ For those who want to go beyond the basics.
 install.packages("ggplot2")
 library(ggplot2)
 
-ggplot(penguins, aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+ggplot(penguins, aes(x = bill_length_mm, y = Body.Mass..g., color = species)) +
   geom_point() +
   geom_smooth(method = "lm") +
   theme_minimal()
@@ -220,7 +220,7 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   output$filtered_penguins <- renderTable({
-    subset(penguins, body_mass_g > input$mass)
+    subset(penguins, Body.Mass..g. > input$mass)
   })
 }
 
