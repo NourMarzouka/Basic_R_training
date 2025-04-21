@@ -125,11 +125,11 @@ Understand how to join datasets together by a common variable.
 
 ```r
 extra_info <- data.frame(
-  species = c("Adelie", "Chinstrap", "Gentoo"),
+  Species = c("Adelie", "Chinstrap", "Gentoo"),
   conservation_status = c("Least Concern", "Least Concern", "Near Threatened")
 )
 
-merged_penguins <- merge(penguins, extra_info, by = "species")
+merged_penguins <- merge(penguins, extra_info, by = "Species")
 head(merged_penguins)
 ```
 
@@ -193,7 +193,7 @@ For those who want to go beyond the basics.
 install.packages("ggplot2")
 library(ggplot2)
 
-ggplot(penguins, aes(x = bill_length_mm, y = Body.Mass..g., color = species)) +
+ggplot(penguins, aes(x = bill_length_mm, y = Body.Mass..g., color = Species)) +
   geom_point() +
   geom_smooth(method = "lm") +
   theme_minimal()
