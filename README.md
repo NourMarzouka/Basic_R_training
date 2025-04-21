@@ -142,14 +142,14 @@ Explore simple statistical tests and models.
 **Chi-Square Test**
 
 ```r
-table(penguins$sex)
-chisq.test(table(penguins$sex))
+table(penguins$Sex)
+chisq.test(table(penguins$Sex))
 ```
 
 **t-test**
 
 ```r
-t.test(Body.Mass..g. ~ sex, data = penguins)
+t.test(Body.Mass..g. ~ Sex, data = penguins)
 ```
 
 **Linear Regression**
