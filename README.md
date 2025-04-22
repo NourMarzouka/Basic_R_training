@@ -159,6 +159,33 @@ model <- lm(Body.Mass..g. ~ Bill.Length..mm., data = penguins)
 summary(model)
 ```
 
+**Logistic Regression**
+```r
+# Clean data: remove rows with missing values
+penguins_clean <- penguins[!is.na(penguins$Sex) & 
+                             !is.na(penguins$Bill.Length..mm.) & 
+                             !is.na(penguins$Flipper.Length..mm.),]
+
+# Sex as binary 
+penguins_clean$Sex_numeric <- ifelse(penguins_clean$Sex == "male", 1, 0)
+
+# some checks
+table(penguins$Sex, useNA = "ifany")
+table(penguins_clean$Sex_numeric, useNA = "ifany")
+table(penguins_clean$Sex_numeric, penguins_clean$Sex, useNA = "ifany")
+
+# Fit a logistic regression model
+model <- glm(Sex_numeric ~ Bill.Length..mm. + Flipper.Length..mm., 
+             data = penguins_clean, 
+             family = binomial)
+
+# View the summary
+summary(model)
+
+# exponentiate the estimates: log-odds
+exp(coef(model))
+```
+
 ---
 
 ## 7. Basic Plotting (Base R)
