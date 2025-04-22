@@ -115,6 +115,12 @@ head(penguins)
 
 ```r
 mean(penguins$Body.Mass..g., na.rm = TRUE)
+
+table(penguins$Species)
+
+table(penguins$Species, penguins$Sex)
+table(penguins$Species, penguins$Sex, useNA = "ifany")
+
 ```
 
 ---
