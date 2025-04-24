@@ -260,6 +260,39 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
+Another example with plot
+
+```r
+# install.packages("shiny")
+library(shiny)
+ 
+ui <- fluidPage(
+  titlePanel("Penguins Explorer"),
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("mass", "Minimum Body Mass:", 2500, 6500, 4000)
+    ),
+    mainPanel(
+      plotOutput("filtered_penguins1"),
+      tableOutput("filtered_penguins")
+    )
+  )
+)
+ 
+server <- function(input, output) {
+  output$filtered_penguins <- renderTable({
+    subset(penguins, Body.Mass..g. > input$mass)
+  })
+  output$filtered_penguins1 <- renderPlot({
+    plot(penguins$Bill.Length..mm.[penguins$Body.Mass..g. > input$mass], penguins$Body.Mass..g.[penguins$Body.Mass..g. > input$mass],
+         main = "Bill Length vs Body Mass",
+         xlab = "Bill Length (mm)", ylab = "Body Mass (g)",
+         pch = 19, col = "blue")
+  })
+}
+ 
+shinyApp(ui = ui, server = server)
+```
 For more Shiny examples, visit: https://shiny.posit.co/
 
 ---
